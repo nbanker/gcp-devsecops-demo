@@ -17,3 +17,9 @@ provider "google" {
   project = var.project_id
   region  = var.region
 }
+
+provider "kubernetes" {
+  host                   = module.gcp_infra.kubeconfig.host
+  token                  = module.gcp_infra.kubeconfig.token
+  cluster_ca_certificate = base64decode(module.gcp_infra.kubeconfig.cluster_ca_certificate)
+}
