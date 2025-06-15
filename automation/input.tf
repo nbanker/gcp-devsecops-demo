@@ -14,7 +14,7 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable "var.project_short_name" {
+variable "project_short_name" {
   description = "Short project name"
   type        = string
 }
