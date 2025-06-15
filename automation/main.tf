@@ -14,11 +14,13 @@ module "gcp_infra" {
   project_id   = var.project_id
   region       = var.region
   cluster_name = var.cluster_name
+  environment  = var.environment
 }
 
-module "argocd_infra" {
-  source       = "../argocd-infra"
-  project_id   = var.project_id
-  region       = var.region
-  cluster_name = var.cluster_name
-}
+# module "argocd_infra" {
+#   source       = "../argocd-infra"
+#   project_id   = var.project_id
+#   region       = var.region
+#   cluster_name = var.cluster_name
+#   environment  = var.environment
+# }
