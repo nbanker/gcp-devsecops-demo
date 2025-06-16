@@ -1,5 +1,5 @@
 environment        = "dev"
 project_id         = "gcp-devsecops-demo"
 region             = "asia-southeast1"
-project_short_name = "gcpdemo"
+project_short_name = "gdsodemo"
 cluster_name       = "gcpdemo-gitops-dev"

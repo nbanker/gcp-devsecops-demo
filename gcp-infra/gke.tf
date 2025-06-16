@@ -1,36 +1,17 @@
 resource "google_container_cluster" "primary" {
-  name     = var.cluster_name
-  location = var.region
-  project  = var.project_id
-
-  remove_default_node_pool = true
-  initial_node_count       = 1
+  name                     = var.cluster_name
+  location                 = var.region
+  enable_autopilot         = true
+  enable_l4_ilb_subsetting = true
 
   network    = google_compute_network.vpc.id
-  subnetwork = google_compute_subnetwork.app_subnet.self_link
+  subnetwork = google_compute_subnetwork.subnet.id
 
   ip_allocation_policy {
-    use_ip_aliases = true
+    stack_type                    = "IPV4_IPV6"
+    services_secondary_range_name = "services-range"
+    cluster_secondary_range_name  = "pods-range"
   }
 
-  addons_config {
-    http_load_balancing {
-      disabled = false
-    }
-  }
-}
-
-data "google_client_config" "default" {}
-
-output "kubeconfig" {
-  value = {
-    host                   = google_container_cluster.primary.endpoint
-    token                  = data.google_client_config.default.access_token
-    cluster_ca_certificate = google_container_cluster.primary.master_auth[0].cluster_ca_certificate
-  }
-  sensitive = true
-}
-
-output "cluster_name" {
-  value = google_container_cluster.primary.name
+  deletion_protection = false
 }

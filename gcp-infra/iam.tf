@@ -1,3 +1,5 @@
+#not currently in use with current config
+
 resource "google_service_account" "gke" {
   account_id   = "${var.project_short_name}-gke-sa"
   display_name = "GKE Service Account"

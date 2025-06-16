@@ -22,4 +22,9 @@ provider "kubernetes" {
   host                   = module.gcp_infra.kubeconfig.host
   token                  = module.gcp_infra.kubeconfig.token
   cluster_ca_certificate = base64decode(module.gcp_infra.kubeconfig.cluster_ca_certificate)
+
+  ignore_annotations = [
+    "^autopilot\\.gke\\.io\\/.*",
+    "^cloud\\.google\\.com\\/.*"
+  ]
 }
