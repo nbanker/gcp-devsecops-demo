@@ -1,0 +1,32 @@
+.idea
+
+# Local .terraform directories
+**/.terraform/*
+
+# Ignore override files as they are usually used to override resources locally and should not be versioned.
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Terraform crash log files
+crash.log
+
+# Ignore any .tfstate files and backup files
+*.tfstate
+*.tfstate.*
+*.backup
+
+# Ignore the terraform plan output
+*.tfplan
+
+# .DS_Store (for macOS users)
+.DS_Store
+
+# vim swap files
+*.swp
+
+src.zip
+
+# emacs
+.projectile-cache.eld
