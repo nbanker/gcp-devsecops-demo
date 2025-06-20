@@ -43,6 +43,7 @@ ArgoCD itself is provisioned **within the GKE cluster using Terraform** under th
 ```
 
 ### GitOps App Repo
+https://github.com/nbanker/gcp-demo-nginx-app
 
 ```
 .
