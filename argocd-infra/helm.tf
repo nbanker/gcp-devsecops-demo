@@ -6,7 +6,7 @@ resource "helm_release" "argocd" {
   version          = "5.51.6"
   create_namespace = false
 
-  values = [
-    file("${path.module}/values.yaml")
-  ]
+  values = []
+
+  depends_on = [kubernetes_namespace.argocd]
 }

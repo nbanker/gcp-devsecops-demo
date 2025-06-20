@@ -10,6 +10,14 @@ terraform {
       source  = "hashicorp/random"
       version = "3.7.1"
     }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 2.29"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 2.11"
+    }
   }
 }
 
@@ -27,4 +35,12 @@ provider "kubernetes" {
     "^autopilot\\.gke\\.io\\/.*",
     "^cloud\\.google\\.com\\/.*"
   ]
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = module.gcp_infra.kubeconfig.host
+    token                  = module.gcp_infra.kubeconfig.token
+    cluster_ca_certificate = base64decode(module.gcp_infra.kubeconfig.cluster_ca_certificate)
+  }
 }
